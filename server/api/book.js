@@ -28,10 +28,11 @@ router.get("/book/:book", (req, res, next) => {
             return res.send({
                 "name": book.name,
                 "author": book.author,
-                "pages": book.pages
+                "pages": book.pages,
+                "status": true
             });
         }else{
-            return res.status(404);
+            return res.status(404).send({"status": false});
         }
     });
 });
