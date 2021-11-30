@@ -1,0 +1,17 @@
+{
+  "name": "webapplications_w11",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd client && npm install",
+    "dev:client": "cd client && npm start",
+    "preinstall": "cd server && npm install",
+    "dev:server": "cd server && npm run dev"
+  },
+  "author": "Zonkel",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.0.14"
+  }
+}
