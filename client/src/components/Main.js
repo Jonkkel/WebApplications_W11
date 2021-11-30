@@ -20,7 +20,6 @@ function Main() {
     // console.log(listItems)
     return (
         <div>
-            <h2>Main page</h2>
             <form onSubmit={submit}>
                 <div>Book name &nbsp;
                     <input type="string" id="name" onChange={(e) => setBook(e.target.value)} value={book}></input>

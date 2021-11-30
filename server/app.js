@@ -1,6 +1,7 @@
 var express = require('express');
 const mongoose = require("mongoose");
 var path = require('path');
+var cors = require("cors");
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
