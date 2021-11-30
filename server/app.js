@@ -6,9 +6,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var app = express();
-
-
-
 const mongoDB = "mongodb://localhost:27017/testdb";
 mongoose.connect(mongoDB);
 mongoose.Promise = Promise;
@@ -22,10 +19,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use("/", require("./api/book.js"));
+
 if (process.env.NODE_ENV === "production"){
     app.get(express.static(path.resolve("..","client", "build")));
-    app.get("*",(req,res)=> 
+    app.get("*",(reg,res)=> 
         res.sendFile(path.resolve("..","client", "build", "index.html"))
     );
 } else if (process.env.NODE_ENV === "development"){
