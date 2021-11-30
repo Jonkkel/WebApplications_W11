@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var app = express();
+
 if (process.env.NODE_ENV === "development"){
     var corsOptions = {
         origin: "http://localhost:3000",
@@ -11,8 +13,6 @@ if (process.env.NODE_ENV === "development"){
     };
     app.use(cors(corsOptions));
 }
-
-var app = express();
 
 const mongoDB = "mongodb://localhost:27017/testdb";
 mongoose.connect(mongoDB);
