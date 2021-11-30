@@ -17,14 +17,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use("/", require("./api/book.js"));
 
+const root = path.resolve("..", "client", "build")
+app.use(express.static(root));
+
 if (process.env.NODE_ENV === "production"){
     app.get(express.static(path.resolve("..","client", "build")));
-    app.get("*",(reg,res)=> 
+    app.get("*",(req,res)=> 
         res.sendFile(path.resolve("..","client", "build", "index.html"))
     );
 } else if (process.env.NODE_ENV === "development"){
