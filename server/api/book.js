@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Book = require("../models/Books");
 const router = express.Router();
 
-router.post("/", (req, res, next) => {
+router.post("/api/book", (req, res, next) => {
     Book.findOne({ name: req.body.name}, (err, book) => {
         if(err) return next(err);
         if(!book){
@@ -20,4 +20,21 @@ router.post("/", (req, res, next) => {
         }
     });
 })
+
+router.get("/book/:book", (req, res, next) => {
+    Book.findOne({ name: req.params.book}, (err, book) => {
+        if(err) return next(err);
+        if(book){
+            return res.send({
+                "name": book.name,
+                "author": book.author,
+                "pages": book.pages
+            });
+        }else{
+            return res.status(404);
+        }
+    });
+});
+
+
 module.exports = router;

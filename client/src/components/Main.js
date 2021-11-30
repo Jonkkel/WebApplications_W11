@@ -7,7 +7,7 @@ function Main() {
 
     const submit = e => {
         e.preventDefault();
-        fetch('/api/book', {
+        fetch('/api/book/', {
             method: 'POST',
             body: JSON.stringify({ "name": book, "author": author, "pages": pages}),
             headers: { 'Content-Type': 'application/json' },
