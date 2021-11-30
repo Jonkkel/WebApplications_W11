@@ -4,6 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+if (process.env.NODE_ENV === "development"){
+    var corsOptions = {
+        origin: "http://localhost:3000",
+        optionsSuccessStatus: 200,
+    };
+    app.use(cors(corsOptions));
+}
+
 var app = express();
 
 const mongoDB = "mongodb://localhost:27017/testdb";
@@ -21,12 +29,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/api/book", require("./api/book.js"));
 
-if (process.env.NODE_ENV === "development"){
-    var corsOptions = {
-        origin: "http://localhost:3000",
-        optionsSuccessStatus: 200,
-    };
-    app.use(cors(corsOptions));
-}
+
 
 module.exports = app;
